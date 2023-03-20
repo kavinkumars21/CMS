@@ -6,6 +6,14 @@ const UserSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        RollNumber: {
+            type: String,
+            required: true,
+        },
+        RegisterNumber: {
+            type: Number,
+            required: true,
+        },
         Batch: {
             type: String,
             required: true,

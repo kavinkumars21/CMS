@@ -6,6 +6,7 @@ const ComplaintSchema = new mongoose.Schema(
         User: {
             type: mongoose.Types.ObjectId,
             ref: "UserData",
+            required: true,
         },
         Type: {
             type: String,
