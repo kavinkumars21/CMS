@@ -38,6 +38,10 @@ const UserSchema = new mongoose.Schema(
             type: Number,
             required: true,
         },
+        Password: {
+            type: String,
+            required: true,
+        },
     },
     { timestamps: true }
 );
