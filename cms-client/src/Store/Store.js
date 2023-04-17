@@ -1,8 +1,10 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import LoginReducer from "./Slice/LoginSlice";
+import ComplaintReducer from "./Slice/ComplaintDetails";
 
 const rootReducer = combineReducers({
-  LoginData: LoginReducer
+  LoginData: LoginReducer,
+  Complaints: ComplaintReducer
 });
 
 const store = configureStore({

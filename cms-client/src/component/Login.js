@@ -6,8 +6,12 @@ import { LoginData } from '../Store/Slice/LoginSlice';
 function Login() {
 
     const dispatch = useDispatch();
+    const Navigate = useNavigate();
+    const { Login } = useSelector((state) => (state.LoginData));
 
-    const handleLoginData = (e) => {
+    const UserId = Login?.data?.data?._id;
+
+    const handleLoginData = async (e) => {
         e.preventDefault();
         const ele = e.target.elements;
         const RollNumber = ele[0].value;
@@ -18,6 +22,16 @@ function Login() {
             LoginData({ RollNumber, Password })
         );
     };
+
+    useEffect(() => {
+        if (Login?.data?.response === "success") {
+            console.log(Login?.data?.data);
+            Navigate("/home");
+            sessionStorage.setItem("USER", UserId);
+        } else {
+            console.log("wrong");
+        }
+    }, [Login]);
 
     return (
         <div className='min-h-screen flex justify-center items-center'>
