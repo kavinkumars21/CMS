@@ -6,6 +6,7 @@ import { Getcomplaint } from "../Controllers/GetComplaint.js";
 import { complaintType } from "../Controllers/PostType.js";
 import { GetComplaintType } from "../Controllers/GetType.js";
 import { Login } from "../Controllers/Login.js";
+import { ComplaintHistory } from "../Controllers/ComplaintHistory.js";
 
 const Route = express.Router();
 
@@ -16,5 +17,6 @@ Route.get("/getcomplaint", Getcomplaint);
 Route.post("/posttype", complaintType);
 Route.get("/gettype", GetComplaintType);
 Route.post("/login", Login);
+Route.post("/complaints", ComplaintHistory);
 
 export default Route;
