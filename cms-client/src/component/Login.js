@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { LoginData } from '../Store/Slice/LoginSlice';
@@ -25,7 +25,6 @@ function Login() {
 
     useEffect(() => {
         if (Login?.data?.response === "success") {
-            console.log(Login?.data?.data);
             Navigate("/home");
             sessionStorage.setItem("USER", UserId);
         } else {
