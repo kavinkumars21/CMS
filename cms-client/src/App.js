@@ -3,13 +3,15 @@ import { useRoutes } from "react-router-dom";
 import Home from "./component/Home";
 import Login from "./component/Login";
 import ComplaintHistory from "./component/ComplaintHistory";
+import AdminHome from "./component/AdminHome";
 
 function App() {
 
   const route = useRoutes([
     {path: '/', element: <Login /> },
     {path: '/home', element: <Home /> },
-    {path: '/history', element: <ComplaintHistory /> }
+    {path: '/history', element: <ComplaintHistory /> },
+    {path: '/admin', element: <AdminHome />}
   ])
   return (
     <div>

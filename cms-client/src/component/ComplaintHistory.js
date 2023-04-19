@@ -13,7 +13,6 @@ function ComplaintHistory() {
   }, []);
 
   const { history } = useSelector((state) => state.history);
-  console.log(history);
 
   return (
     <div className='min-h-screen flex flex-col justify-center items-center gap-8'>

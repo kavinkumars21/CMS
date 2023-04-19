@@ -23,10 +23,10 @@ function Home() {
 
   return (
     <div className='min-h-screen'>
-      <div className='flex justify-end p-5'>
+      <div className='flex justify-end p-10'>
           <Link to="/history" >Complaint history</Link>
       </div>
-      <div className='flex justify-center items-center'>
+      <div className='flex justify-center align-middle mt-[8%]'>
         <form onSubmit={handleFormData} className='flex flex-col gap-4 p-8 border border-blue-300 rounded-md'>
           <div>
             <p>Your complaint is based on :</p>
