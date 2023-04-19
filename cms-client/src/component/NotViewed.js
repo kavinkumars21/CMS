@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { notviewedcomplaints } from '../Store/Slice/NotViewedSlice';
+import { UpdateView } from '../Store/Slice/UpdateView';
 
 function NotViewed() {
     
@@ -11,6 +12,14 @@ function NotViewed() {
   }, []);
 
   const { notviewed } = useSelector((state) => state.notviewed);
+
+  const handlestatus = async (Id) => {
+    console.log(Id);
+    const id = Id;
+    dispatch(
+      UpdateView({ id })
+    );
+  }
 
   return (
     <div className='flex flex-col gap-8 p-10'>
@@ -30,11 +39,11 @@ function NotViewed() {
               notviewed.map((data) => (
                 <tr>
                     <td className='border border-gray-800 p-2'>{data.User.Name}</td>
-                    <td className='border border-gray-800 p-2'>123456</td>
+                    <td className='border border-gray-800 p-2'>{data.createdAt}</td>
                     <td className='border border-gray-800 p-2'>{data.Type}</td>
                     <td className='border border-gray-800 p-2'>{data.Description}</td>
                     <td className='border border-gray-800 p-2'>
-                    <button className='bg-blue-300 p-1 rounded-sm'>Mark as viewed</button>
+                    <button className='bg-blue-300 p-1 rounded-sm' onClick={(e) => handlestatus(data._id)}>Mark as viewed</button>
                     </td>
                 </tr>
               ))
