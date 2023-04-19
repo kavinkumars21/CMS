@@ -8,6 +8,8 @@ import { GetComplaintType } from "../Controllers/GetType.js";
 import { Login } from "../Controllers/Login.js";
 import { ComplaintHistory } from "../Controllers/ComplaintHistory.js";
 import { NotViewed } from "../Controllers/NotViewed.js";
+import { Inprogress } from "../Controllers/Inprogress.js";
+import { UpdateViewed } from "../Controllers/UpdateViewed.js";
 
 const Route = express.Router();
 
@@ -20,5 +22,7 @@ Route.get("/gettype", GetComplaintType);
 Route.post("/login", Login);
 Route.post("/complaints", ComplaintHistory);
 Route.get("/notviewed", NotViewed);
+Route.get("/inprogress", Inprogress);
+Route.put("/updateview" ,UpdateViewed);
 
 export default Route;
