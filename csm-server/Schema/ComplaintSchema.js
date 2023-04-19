@@ -16,6 +16,21 @@ const ComplaintSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        Viewed: {
+            type: Boolean,
+            required: false,
+            default: false
+        },
+        Inprogress: {
+            type: Boolean,
+            required: false,
+            default: false
+        },
+        Completed: {
+            type: Boolean,
+            required: false,
+            default: false
+        }
     },
     { timestamps: true }
 );

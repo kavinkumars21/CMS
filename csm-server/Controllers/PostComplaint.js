@@ -5,6 +5,9 @@ export const Complaints = async (req, res) => {
         Type: req.body.Type,
         Description: req.body.Description,
         User: req.body.User,
+        Viewed: req.body.Viewed,
+        Inprogress: req.body.Inprogress,
+        Completed: req.body.Completed
     });
     complaint.save().then(() => {
         res.send({
