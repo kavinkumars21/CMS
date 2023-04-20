@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { complaintDetails } from '../Store/Slice/ComplaintDetails';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 function Home() {
 
@@ -10,14 +11,17 @@ function Home() {
   const [type, setType] = useState();
   const [description, setDescription] = useState();
 
+  const date = moment().format('LLL');
+
   const handleFormData = async (e) => {
     e.preventDefault();
     const ele = e.target.elements;
     const User = sessionStorage.getItem("USER");
     const Type = { type }.type;
     const Description = { description }.description;
+    const RaisedOn = { date }.date;
     dispatch(
-      complaintDetails({ User, Type, Description })
+      complaintDetails({ User, Type, Description, RaisedOn })
     );
   }
 

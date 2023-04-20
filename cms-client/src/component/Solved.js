@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { solvedcomplaints } from '../Store/Slice/SolvedComplaints';
-import moment from 'moment';
 
 function Solved() {
 
@@ -12,9 +11,6 @@ function Solved() {
     }, []);
 
     const { solved } = useSelector((state) => state.solved);
-
-    const Date = moment().format('MMMM Do YYYY, h:mm:ss a');
-    console.log(Date);
 
     return (
         <div className='flex flex-col gap-8 p-10'>
@@ -33,7 +29,7 @@ function Solved() {
                         solved.map((data) => (
                             <tr>
                                 <td className='border border-gray-800 p-2'>{data.User.Name}</td>
-                                <td className='border border-gray-800 p-2'>{data.createdAt}</td>
+                                <td className='border border-gray-800 p-2'>{data.RaisedOn}</td>
                                 <td className='border border-gray-800 p-2'>{data.Type}</td>
                                 <td className='border border-gray-800 p-2'>{data.Description}</td>
                             </tr>

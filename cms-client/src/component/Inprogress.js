@@ -38,7 +38,7 @@ function Inprogress() {
               inprogress.map((data) => (
                 <tr>
                     <td className='border border-gray-800 p-2'>{data.User.Name}</td>
-                    <td className='border border-gray-800 p-2'>123456</td>
+                    <td className='border border-gray-800 p-2'>{data.RaisedOn}</td>
                     <td className='border border-gray-800 p-2'>{data.Type}</td>
                     <td className='border border-gray-800 p-2'>{data.Description}</td>
                     <td className='border border-gray-800 p-2'>

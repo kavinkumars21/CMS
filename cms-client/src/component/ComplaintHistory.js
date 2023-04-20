@@ -33,7 +33,7 @@ function ComplaintHistory() {
               history.map((data) => (
                 <tr key={data}>
                   <td className='border border-gray-800 p-2'>{data.Type}</td>
-                  <td className='border border-gray-800 p-2'>{data.createdAt}</td>
+                  <td className='border border-gray-800 p-2'>{data.RaisedOn}</td>
                   <td className='border border-gray-800 p-2'>{data.Description}</td>
                   <td className='border border-gray-800 p-2 text-center'>
                     {data.Viewed === "true" && <p>✔️</p>}
