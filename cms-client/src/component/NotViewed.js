@@ -42,7 +42,7 @@ function NotViewed() {
                     <td className='border border-gray-800 p-2'>{data.Type}</td>
                     <td className='border border-gray-800 p-2'>{data.Description}</td>
                     <td className='border border-gray-800 p-2'>
-                    <button className='bg-blue-300 p-1 rounded-sm' onClick={(e) => handlestatus(data._id)}>Mark as viewed</button>
+                    <button className='bg-blue-300 p-1 rounded-sm' onClick={(e) => handlestatus(data._id)}>Mark as viewed and Inprogress</button>
                     </td>
                 </tr>
               ))

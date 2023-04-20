@@ -6,6 +6,7 @@ import NotViewedCompReducers from "./Slice/NotViewedSlice";
 import InprogressCompReducers from "./Slice/InprogressSlice";
 import UpdateViewReducer from "./Slice/UpdateView";
 import UpdateInprogReducer from "./Slice/UpdateInprogress";
+import SolvedComplaintReducers from "./Slice/SolvedComplaints";
 
 const rootReducer = combineReducers({
   LoginData: LoginReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   notviewed: NotViewedCompReducers,
   inprogress: InprogressCompReducers,
   updateview: UpdateViewReducer,
-  updateinprogress: UpdateInprogReducer
+  updateinprogress: UpdateInprogReducer,
+  solved: SolvedComplaintReducers
 });
 
 const store = configureStore({

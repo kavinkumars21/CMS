@@ -26,7 +26,7 @@ function ComplaintHistory() {
               <th className='border border-gray-800 p-3'>Raised on</th>
               <th className='border border-gray-800 p-3'>Complaint description</th>
               <th className='border border-gray-800 p-3'>Viewed the complaint</th>
-              <th className='border border-gray-800 p-3'>On progress</th>
+              <th className='border border-gray-800 p-3'>Assigned and Inprogress</th>
               <th className='border border-gray-800 p-3'>Completed</th>
             </tr>
             {
