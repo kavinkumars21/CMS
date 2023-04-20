@@ -2,7 +2,7 @@ import { ComplaintModel } from "../Schema/ComplaintSchema.js";
 
 export const NotViewed = (req, res) => {
 
-    ComplaintModel.find({ Viewed : false }).populate('User')
+    ComplaintModel.find({ Viewed : "false" }).populate('User')
         .then((data) => {
             res.send({
                 status: 200,

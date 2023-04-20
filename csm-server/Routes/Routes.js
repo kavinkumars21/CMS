@@ -10,6 +10,7 @@ import { ComplaintHistory } from "../Controllers/ComplaintHistory.js";
 import { NotViewed } from "../Controllers/NotViewed.js";
 import { Inprogress } from "../Controllers/Inprogress.js";
 import { UpdateViewed } from "../Controllers/UpdateViewed.js";
+import { UpdateInprogress } from "../Controllers/UpdateInprogress.js";
 
 const Route = express.Router();
 
@@ -23,6 +24,7 @@ Route.post("/login", Login);
 Route.post("/complaints", ComplaintHistory);
 Route.get("/notviewed", NotViewed);
 Route.get("/inprogress", Inprogress);
-Route.put("/updateview" ,UpdateViewed);
+Route.put("/updateview" , UpdateViewed);
+Route.put("/updateinprogress", UpdateInprogress);
 
 export default Route;

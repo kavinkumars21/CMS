@@ -1,12 +1,12 @@
 import { ComplaintModel } from "../Schema/ComplaintSchema.js";
 
-export const Inprogress = (req, res) => {
+export const UpdateInprogress = (req, res) => {
 
-    ComplaintModel.find({Viewed : "true" , Inprogress : "false" }).populate('User')
+    ComplaintModel.findOneAndUpdate({ _id : req.body.id },{Inprogress : "true"},{upsert: true})
         .then((data) => {
             res.send({
                 status: 200,
-                message: "Complaints found",
+                message: "Complaint Status updated",
                 data: data,
             });
         }).catch((err) => {
