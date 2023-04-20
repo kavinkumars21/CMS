@@ -11,6 +11,7 @@ import { NotViewed } from "../Controllers/NotViewed.js";
 import { Inprogress } from "../Controllers/Inprogress.js";
 import { UpdateViewed } from "../Controllers/UpdateViewed.js";
 import { UpdateInprogress } from "../Controllers/UpdateInprogress.js";
+import { SolvedComplaints } from "../Controllers/SolvedComplaints.js";
 
 const Route = express.Router();
 
@@ -26,5 +27,6 @@ Route.get("/notviewed", NotViewed);
 Route.get("/inprogress", Inprogress);
 Route.put("/updateview" , UpdateViewed);
 Route.put("/updateinprogress", UpdateInprogress);
+Route.get("/solved", SolvedComplaints);
 
 export default Route;
