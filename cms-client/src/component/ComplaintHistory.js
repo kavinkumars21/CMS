@@ -35,9 +35,15 @@ function ComplaintHistory() {
                   <td className='border border-gray-800 p-2'>{data.Type}</td>
                   <td className='border border-gray-800 p-2'>{data.createdAt}</td>
                   <td className='border border-gray-800 p-2'>{data.Description}</td>
-                  <td className='border border-gray-800 p-2 text-center'>✔️</td>
-                  <td className='border border-gray-800 p-2 text-center'>✔️</td>
-                  <td className='border border-gray-800 p-2 text-center'>✔️</td>
+                  <td className='border border-gray-800 p-2 text-center'>
+                    {data.Viewed === "true" && <p>✔️</p>}
+                  </td>
+                  <td className='border border-gray-800 p-2 text-center'>
+                  {data.Inprogress === "true" && <p>✔️</p>}
+                  </td>
+                  <td className='border border-gray-800 p-2 text-center'>
+                  {data.Completed === "true" && <p>✔️</p>}
+                  </td>
                 </tr>
               ))
             }

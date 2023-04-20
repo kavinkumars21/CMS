@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { notviewedcomplaints } from '../Store/Slice/NotViewedSlice';
 import { UpdateView } from '../Store/Slice/UpdateView';
@@ -14,7 +14,6 @@ function NotViewed() {
   const { notviewed } = useSelector((state) => state.notviewed);
 
   const handlestatus = async (Id) => {
-    console.log(Id);
     const id = Id;
     dispatch(
       UpdateView({ id })
