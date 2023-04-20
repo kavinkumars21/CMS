@@ -7,7 +7,7 @@ export const complaintType = async (req, res) => {
     ComplaintType.save().then(() => {
         res.send({
             status: 200,
-            message: "Complaint type added",
+            message: "Complaint category added",
         });
     }).catch((err) => {
         res.send(err);
