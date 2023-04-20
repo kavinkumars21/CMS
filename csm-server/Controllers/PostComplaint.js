@@ -7,7 +7,8 @@ export const Complaints = async (req, res) => {
         User: req.body.User,
         Viewed: req.body.Viewed,
         Inprogress: req.body.Inprogress,
-        Completed: req.body.Completed
+        Completed: req.body.Completed,
+        RaisedOn: req.body.RaisedOn
     });
     complaint.save().then(() => {
         res.send({

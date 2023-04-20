@@ -16,6 +16,10 @@ const ComplaintSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        RaisedOn: {
+            type: String,
+            required: true
+        },
         Viewed: {
             type: String,
             required: false,
@@ -30,7 +34,7 @@ const ComplaintSchema = new mongoose.Schema(
             type: String,
             required: false,
             default: "false"
-        }
+        },
     },
     { timestamps: true }
 );
