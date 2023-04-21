@@ -8,6 +8,7 @@ import UpdateViewReducer from "./Slice/UpdateView";
 import UpdateInprogReducer from "./Slice/UpdateInprogress";
 import SolvedComplaintReducers from "./Slice/SolvedComplaints";
 import CategoryReducer from "./Slice/CategorySlice";
+import GetCategoryReducers from "./Slice/GetCategorySlice";
 
 const rootReducer = combineReducers({
   LoginData: LoginReducer,
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   updateview: UpdateViewReducer,
   updateinprogress: UpdateInprogReducer,
   solved: SolvedComplaintReducers,
-  category: CategoryReducer
+  category: CategoryReducer,
+  complaintCategory: GetCategoryReducers
 });
 
 const store = configureStore({
