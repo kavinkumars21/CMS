@@ -5,7 +5,7 @@ export const GetComplaintType = (req, res) => {
     ComplaintTypeModel.find().then((data) => {
         res.send({
             status: 200,
-            message: "Complaint types found",
+            message: "Complaint categories found",
             data: data,
         });
     }).catch((err) => {
