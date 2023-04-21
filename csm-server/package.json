@@ -1,5 +1,5 @@
 {
-  "name": "csm-server",
+  "name": "cms-server",
   "version": "1.0.0",
   "description": "Server for complaint management system",
   "main": "index.js",
