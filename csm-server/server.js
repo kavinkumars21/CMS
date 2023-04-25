@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import * as dotenv from 'dotenv';
 import { mongoUrl } from "./Config/config.js";
 import routes from "./Routes/Routes.js";
+import fileUpload from "express-fileupload";
 
 dotenv.config();
 
@@ -15,6 +16,10 @@ const PORT = process.env.PORT;
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 
 app.use(bodyParser.json());
+
+app.use(fileUpload({
+  useTempFiles:true
+}))
 
 app.use(bodyParser.urlencoded({ extended: true }));
 

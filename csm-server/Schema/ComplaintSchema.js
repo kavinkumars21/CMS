@@ -20,6 +20,16 @@ const ComplaintSchema = new mongoose.Schema(
             type: String,
             required: true
         },
+        Image: {
+            public_id: {
+                type: String,
+                required: false
+            },
+            url: {
+                type: String,
+                required: false
+            }
+        },
         Viewed: {
             type: String,
             required: false,
