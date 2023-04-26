@@ -20,6 +20,10 @@ const ComplaintSchema = new mongoose.Schema(
             type: String,
             required: true
         },
+        Image: {
+            data: Buffer,
+            contentType: String
+        },
         Viewed: {
             type: String,
             required: false,

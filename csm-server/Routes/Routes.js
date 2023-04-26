@@ -1,4 +1,6 @@
 import express from "express";
+import multer from "multer";
+
 import { Postuser } from "../Controllers/PostUser.js";
 import { Getuser } from "../Controllers/GetUser.js";
 import { Complaints } from "../Controllers/PostComplaint.js";
@@ -15,9 +17,24 @@ import { SolvedComplaints } from "../Controllers/SolvedComplaints.js";
 
 const Route = express.Router();
 
+const ComplaintImage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, "Image");
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
+    },
+});
+const Upload = multer({
+    storage: ComplaintImage,
+    limits: {
+        fileSize: 90000000,
+    },
+});
+
 Route.post("/postuser", Postuser);
 Route.get("/getuser", Getuser);
-Route.post("/postcomplaint", Complaints);
+Route.post("/postcomplaint",Upload.single("image"), Complaints);
 Route.get("/getcomplaint", Getcomplaint);
 Route.post("/posttype", complaintType);
 Route.get("/gettype", GetComplaintType);
