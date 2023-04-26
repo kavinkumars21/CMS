@@ -21,7 +21,15 @@ export const Complaints = async (req, res) => {
             status: 200,
             message: "Complaint is added",
         });
-    }).catch((err) => {
-        res.send(err);
-    })
+        complaint.save().then(() => {
+            res.send({
+                status: 200,
+                message: "Complaint is added",
+            });
+        }).catch((err) => {
+            res.send(err);
+        })
+    } catch (error) {
+        console.log(error);
+    }
 };
