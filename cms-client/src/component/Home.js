@@ -14,12 +14,20 @@ function Home() {
   }, []);
 
   const { complaintCategory } = useSelector((state) => state.complaintCategory);
-  console.log(complaintCategory);
 
   const [type, setType] = useState();
   const [description, setDescription] = useState();
+  const [Image, setImage] = useState();
 
   const date = moment().format('LLL');
+
+  const convertedImage = (e) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = () => {
+      setImage(reader.result);
+    };
+  }
 
   const handleFormData = async (e) => {
     e.preventDefault();
@@ -28,8 +36,9 @@ function Home() {
     const Type = { type }.type;
     const Description = { description }.description;
     const RaisedOn = { date }.date;
+    const image = { Image }.Image;
     dispatch(
-      complaintDetails({ User, Type, Description, RaisedOn })
+      complaintDetails({ User, Type, Description, RaisedOn, image })
     );
   }
 
@@ -54,7 +63,9 @@ function Home() {
           <div className='grid gap-2'>
             <label>Description of the complaint :</label>
             <input type='text' placeholder='describe your complaint' onChange={e => setDescription(e.target.value)}
-              className='border border-gray-600 rounded-[4px]'></input>
+              className='border border-gray-600 rounded-[4px]'>
+            </input>
+            <input type='file' onChange={(e) => convertedImage(e)}></input>
           </div>
           <div className='flex justify-between'>
             <button className='border border-gray-400 rounded-[4px]'>Submit</button>

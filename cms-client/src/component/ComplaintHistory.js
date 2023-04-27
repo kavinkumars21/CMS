@@ -31,32 +31,27 @@ function ComplaintHistory() {
             <th className='border border-gray-800 p-3'>Completed</th>
           </tr>
           {
-            history.map((data) => {
-              const base64String = btoa(
-                new Uint8Array(data?.Image?.data?.data)
-                  .reduce((data, byte) => data + String.fromCharCode(byte), '')
-              )
-              return (
-                <tr key={data}>
-                  <td className='border border-gray-800 p-2'>{data.Type}</td>
-                  <td className='border border-gray-800 p-2'>{data.RaisedOn}</td>
-                  <td className='border border-gray-800 p-2'>{data.Description}</td>
-                  <td className='border border-gray-800 p-2 text-center'>
-                    {data.Image && <img className='h-52 w-80' src={`data:image/png;base64,${base64String}`} alt='Unable to load image'></img>}
-                    {!data.Image && <p>Image not available</p>}
-                  </td>
-                  <td className='border border-gray-800 p-2 text-center'>
-                    {data.Viewed === "true" && <p>✔️</p>}
-                  </td>
-                  <td className='border border-gray-800 p-2 text-center'>
-                    {data.Inprogress === "true" && <p>✔️</p>}
-                  </td>
-                  <td className='border border-gray-800 p-2 text-center'>
-                    {data.Completed === "true" && <p>✔️</p>}
-                  </td>
-                </tr>
-              )
-            })
+            history.map((data) => (
+              <tr key={data}>
+                <td className='border border-gray-800 p-2'>{data.Type}</td>
+                <td className='border border-gray-800 p-2'>{data.RaisedOn}</td>
+                <td className='border border-gray-800 p-2'>{data.Description}</td>
+                <td className='border border-gray-800 p-2 text-center'>
+                  {data.Image && <img className='h-52 w-80' src={data.Image} alt='Unable to load image'></img>}
+                  {!data.Image && <p>Image not available</p>}
+                </td>
+                <td className='border border-gray-800 p-2 text-center'>
+                  {data.Viewed === "true" && <p>✔️</p>}
+                </td>
+                <td className='border border-gray-800 p-2 text-center'>
+                  {data.Inprogress === "true" && <p>✔️</p>}
+                </td>
+                <td className='border border-gray-800 p-2 text-center'>
+                  {data.Completed === "true" && <p>✔️</p>}
+                </td>
+              </tr>
+            )
+            )
           }
         </table>
       </div>
