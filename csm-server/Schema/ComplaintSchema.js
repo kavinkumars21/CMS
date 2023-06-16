@@ -20,10 +20,10 @@ const ComplaintSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        Image: {
+        Image: [{
             type: String,
             required: false
-        },
+        }],
         Viewed: {
             type: String,
             required: false,
