@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const TableWithDropdowns = () => {
   const [selectedValues, setSelectedValues] = useState([]);
 
-  const dropdownOptions = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
+  const dropdownOptions = ['Option 1', 'Option 2'];
 
   const handleDropdownChange = (index, value) => {
     const updatedValues = [...selectedValues];

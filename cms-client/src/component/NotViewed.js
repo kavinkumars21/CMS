@@ -34,20 +34,16 @@ function NotViewed() {
   };
 
   const renderDropdowns = () => {
-    return complaintCategory?.length > 0 && complaintCategory.map((option, index) => (
-      <select
-        key={index}
-        value={selectedValues[index] || ''}
-        onChange={(e) => handleDropdownChange(index, e.target.value)}
-      >
-        <option value="">Select an option</option>
+    return (
+      <select>
+        <option value="">Select an Employee</option>
         {complaintCategory?.length > 0 && complaintCategory.map((opt, i) => (
           <option key={i} value={opt}>
             {opt.Type}
           </option>
         ))}
       </select>
-    ));
+    )
   };
 
   return (
@@ -77,26 +73,9 @@ function NotViewed() {
                   <div>
                     <div>
                       <div className='bg-slate-400 rounded-md flex px-3 py-1'>
-                        {/* <button className='flex items-center gap-2' onClick={() => setDropdown(data._id)}>
-                          Choose a worker
-                          <ion-icon name={`${open ? "chevron-down-outline" : "chevron-up-outline"}`}></ion-icon>
-                        </button> */}
-
+                        {renderDropdowns()}
                       </div>
                       <div>
-                        <div className="flex flex-col gap-1 absolute mt-[6px] bg-blue-200 shadow-2xl duration-700">
-                          {
-                            complaintCategory?.length > 0 && complaintCategory.map((data) => (
-                              <div className='flex'>
-                                <div>
-                                  <button className='flex items-center gap-2 group hover:bg-slate-100 w-full h-5' onClick={() => setMultilevelDD(!MultilevelDD)}>
-                                    {data.Type}
-                                  </button>
-                                </div>
-                              </div>
-                            ))
-                          }
-                        </div>
                         <div className={`flex flex-col gap-1 mt-[-6px] bg-blue-200 shadow-2xl duration-700 min-w-fit ${MultilevelDD ? "hidden translate-x-0" : "translate-x-32 min-h-fit p-3"}`}>
                           <p>person 1</p>
                           <p>person 2</p>
