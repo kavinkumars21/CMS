@@ -59,6 +59,10 @@ function Home() {
                         </div>
                      ))
                   }
+                  <div>
+                           <input type='radio' id="Other" value="Other" name="type" onChange={e => setType(e.target.value)}></input>
+                           <label for='Other'>Other</label><br></br>
+                        </div>
                </div>
                <div className='grid gap-2'>
                   <label>Description of the complaint :</label>
