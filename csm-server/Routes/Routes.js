@@ -13,6 +13,8 @@ import { Inprogress } from "../Controllers/Inprogress.js";
 import { UpdateViewed } from "../Controllers/UpdateViewed.js";
 import { UpdateInprogress } from "../Controllers/UpdateInprogress.js";
 import { SolvedComplaints } from "../Controllers/SolvedComplaints.js";
+import { postSolver } from "../Controllers/PostSolvers.js";
+import { GetSolvers } from "../Controllers/Solvers.js";
 
 const Route = express.Router();
 
@@ -29,5 +31,7 @@ Route.get("/inprogress", Inprogress);
 Route.put("/updateview" , UpdateViewed);
 Route.put("/updateinprogress", UpdateInprogress);
 Route.get("/solved", SolvedComplaints);
+Route.post("/postsolver", postSolver);
+Route.get("/solvers", GetSolvers);
 
 export default Route;
