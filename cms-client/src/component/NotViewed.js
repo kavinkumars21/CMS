@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { notviewedcomplaints } from '../Store/Slice/NotViewedSlice';
 import { UpdateView } from '../Store/Slice/UpdateView';
 import { GetCategory } from '../Store/Slice/GetCategorySlice';
-import TableWithDropdowns from './Dropdown';
 
 function NotViewed() {
 
@@ -17,6 +16,8 @@ function NotViewed() {
   const { notviewed } = useSelector((state) => state.notviewed);
   const { complaintCategory } = useSelector((state) => state.complaintCategory);
 
+  const toggle = id => setdrop(drop === id ? undefined : id)
+
   const handlestatus = async (Id) => {
     const id = Id;
     dispatch(
@@ -24,25 +25,17 @@ function NotViewed() {
     );
   }
 
-  const [selectedValues, setSelectedValues] = useState([]);
-  const [MultilevelDD, setMultilevelDD] = useState(true);
-
-  const handleDropdownChange = (index, value) => {
-    const updatedValues = [...selectedValues];
-    updatedValues[index] = value;
-    setSelectedValues(updatedValues);
-  };
+  const [drop, setdrop] = useState();
 
   const renderDropdowns = () => {
     return (
-      <select>
-        <option value="">Select an Employee</option>
-        {complaintCategory?.length > 0 && complaintCategory.map((opt, i) => (
-          <option key={i} value={opt}>
+      complaintCategory?.length > 0 && complaintCategory.map((opt, i) => (
+        <div key={i} value={opt}>
+          <div className='flex bg-'>
             {opt.Type}
-          </option>
-        ))}
-      </select>
+          </div>
+        </div>
+      ))
     )
   };
 
@@ -51,8 +44,6 @@ function NotViewed() {
       <div>
         Complaints Not Viewed
       </div>
-      <TableWithDropdowns />
-      <div>{renderDropdowns()}</div>
       <div>
         <table>
           <tr>
@@ -63,28 +54,21 @@ function NotViewed() {
             <th className='border border-gray-800 p-3'>Assign a worker</th>
           </tr>
           {
-            notviewed.map((data,index) => (
+            notviewed.map((data, index) => (
               <tr>
                 <td className='border border-gray-800 p-2'>{data.User.Name}</td>
                 <td className='border border-gray-800 p-2'>{data.RaisedOn}</td>
                 <td className='border border-gray-800 p-2'>{data.Type}</td>
                 <td className='border border-gray-800 p-2'>{data.Description}</td>
                 <td className='border border-gray-800 p-2'>
-                  <div>
+                  <div className='h-10'>
+                    <div className='bg-slate-400 rounded-md flex px-3 py-1'>
+                      <button onClick={(e) => toggle(data._id)}>Select</button>
+                    </div>
                     <div>
-                      <div className='bg-slate-400 rounded-md flex px-3 py-1'>
-                        {renderDropdowns()}
-                      </div>
-                      <div>
-                        <div className={`flex flex-col gap-1 mt-[-6px] bg-blue-200 shadow-2xl duration-700 min-w-fit ${MultilevelDD ? "hidden translate-x-0" : "translate-x-32 min-h-fit p-3"}`}>
-                          <p>person 1</p>
-                          <p>person 2</p>
-                          <p>person 3</p>
-                        </div>
-                      </div>
+                      {drop === data._id && renderDropdowns()}
                     </div>
                   </div>
-                  {/* <button className='bg-blue-300 p-1 rounded-sm' onClick={(e) => handlestatus(data._id)}>Mark as viewed and Inprogress</button> */}
                 </td>
               </tr>
             ))
