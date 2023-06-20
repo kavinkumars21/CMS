@@ -15,6 +15,7 @@ import { UpdateInprogress } from "../Controllers/UpdateInprogress.js";
 import { SolvedComplaints } from "../Controllers/SolvedComplaints.js";
 import { postSolver } from "../Controllers/PostSolvers.js";
 import { GetSolvers } from "../Controllers/Solvers.js";
+import { GetCategoryBasedSolvers } from "../Controllers/GetCatBasedSolvers.js";
 
 const Route = express.Router();
 
@@ -33,5 +34,6 @@ Route.put("/updateinprogress", UpdateInprogress);
 Route.get("/solved", SolvedComplaints);
 Route.post("/postsolver", postSolver);
 Route.get("/solvers", GetSolvers);
+Route.get("/getsolvers", GetCategoryBasedSolvers);
 
 export default Route;
