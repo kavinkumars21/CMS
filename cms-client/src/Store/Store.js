@@ -9,6 +9,7 @@ import UpdateInprogReducer from "./Slice/UpdateInprogress";
 import SolvedComplaintReducers from "./Slice/SolvedComplaints";
 import CategoryReducer from "./Slice/CategorySlice";
 import GetCategoryReducers from "./Slice/GetCategorySlice";
+import CatBasedSolversReducers from "./Slice/CategoryBasedSolvers";
 
 const rootReducer = combineReducers({
   LoginData: LoginReducer,
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
   updateinprogress: UpdateInprogReducer,
   solved: SolvedComplaintReducers,
   category: CategoryReducer,
-  complaintCategory: GetCategoryReducers
+  complaintCategory: GetCategoryReducers,
+  CategoryBasedSolvers: CatBasedSolversReducers
 });
 
 const store = configureStore({

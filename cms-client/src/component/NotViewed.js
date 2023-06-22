@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { notviewedcomplaints } from '../Store/Slice/NotViewedSlice';
 import { UpdateView } from '../Store/Slice/UpdateView';
 import { GetCategory } from '../Store/Slice/GetCategorySlice';
+import { Categorybasedsolvers } from '../Store/Slice/CategoryBasedSolvers';
 
 function NotViewed() {
 
@@ -15,29 +16,54 @@ function NotViewed() {
 
   const { notviewed } = useSelector((state) => state.notviewed);
   const { complaintCategory } = useSelector((state) => state.complaintCategory);
-
-  const toggle = id => setdrop(drop === id ? undefined : id)
-
-  const handlestatus = async (Id) => {
-    const id = Id;
-    dispatch(
-      UpdateView({ id })
-    );
-  }
+  const { CategoryBasedSolvers } = useSelector((state) => state.CategoryBasedSolvers);
 
   const [drop, setdrop] = useState();
+  const [leveldrop, setleveldrop] = useState();
+  const toggle = id => setdrop(drop === id ? undefined : id);
+
+
+
+  const handleCategory = async (Id) => {
+    setleveldrop(leveldrop === Id ? undefined : Id);
+    const Category = Id;
+    console.log(Category);
+    dispatch(
+      Categorybasedsolvers({ Category })
+    );
+  }
 
   const renderDropdowns = () => {
     return (
       complaintCategory?.length > 0 && complaintCategory.map((opt, i) => (
-        <div key={i} value={opt}>
-          <div className='flex bg-'>
+        <div key={i} value={opt} className='bg-slate-200 px-3'>
+          <button onClick={(e) => handleCategory(opt._id)} className='flex'>
             {opt.Type}
+          </button>
+          <div>
+            {leveldrop === opt._id && renderlevelDrops()}
           </div>
         </div>
       ))
     )
   };
+
+  const handleSolvers = async (Id) => {
+    const Solvers = Id;
+    console.log(Solvers);
+  }
+
+  const renderlevelDrops = () => {
+    return (
+      CategoryBasedSolvers?.length > 0 && CategoryBasedSolvers.map((opt, i) => (
+        <div key={i} value={opt} className='bg-slate-200 px-3'>
+          <button onClick={(e) => handleSolvers(opt._id)} className='flex'>
+            {opt.Name}
+          </button>
+        </div>
+      ))
+    )
+  }
 
   return (
     <div className='flex flex-col gap-8 p-10'>
@@ -61,12 +87,21 @@ function NotViewed() {
                 <td className='border border-gray-800 p-2'>{data.Type}</td>
                 <td className='border border-gray-800 p-2'>{data.Description}</td>
                 <td className='border border-gray-800 p-2'>
-                  <div className='h-10'>
-                    <div className='bg-slate-400 rounded-md flex px-3 py-1'>
-                      <button onClick={(e) => toggle(data._id)}>Select</button>
+                  <div className='h-10 z-0'>
+                    <div className='bg-slate-400 rounded-md px-3 py-1 z-10 w-full'>
+                      <button onClick={(e) => toggle(data._id)} className='flex'>
+                        Select
+                        <div className={`pt-1 ml-8 ${drop === data._id && "rotate-180 duration-1000"}`}>
+                          <ion-icon name="chevron-down-outline"></ion-icon>
+                        </div>
+                      </button>
                     </div>
-                    <div>
-                      {drop === data._id && renderDropdowns()}
+                    <div className='flex'>
+                      <div className='z-40 h-fit w-fit rounded-md mt-1 overflow-hidden translate-x-10'>
+                        {drop === data._id && renderDropdowns()}
+                      </div>
+                      <div className='z-40 h-fit w-fit rounded-md mt-3 overflow-hidden translate-x-11'>
+                      </div>
                     </div>
                   </div>
                 </td>
