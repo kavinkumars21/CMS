@@ -34,6 +34,6 @@ Route.put("/updateinprogress", UpdateInprogress);
 Route.get("/solved", SolvedComplaints);
 Route.post("/postsolver", postSolver);
 Route.get("/solvers", GetSolvers);
-Route.get("/getsolvers", GetCategoryBasedSolvers);
+Route.post("/getsolvers", GetCategoryBasedSolvers);
 
 export default Route;
