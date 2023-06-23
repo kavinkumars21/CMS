@@ -2,7 +2,7 @@ import { ComplaintModel } from "../Schema/ComplaintSchema.js";
 
 export const UpdateViewed = (req, res) => {
 
-  ComplaintModel.findOneAndUpdate({ _id: req.body.id }, { AssignedTo: req.body.AssignedTo, Viewed: "true", Inprogress: "true" }, { upsert: true })
+  ComplaintModel.findOneAndUpdate({ _id: req.body.complaint }, { AssignedTo: req.body.AssignedTo, Viewed: "true", Inprogress: "true" }, { upsert: true })
     .then((data) => {
       res.send({
         status: 200,

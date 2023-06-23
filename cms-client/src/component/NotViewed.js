@@ -20,14 +20,17 @@ function NotViewed() {
 
   const [drop, setdrop] = useState();
   const [leveldrop, setleveldrop] = useState();
-  const toggle = id => setdrop(drop === id ? undefined : id);
 
+  const [complaint, setcomplaint] = useState();
 
+  const toggle = (id) => {
+    setdrop(drop === id ? undefined : id);
+    setcomplaint(id);
+  }
 
   const handleCategory = async (Id) => {
     setleveldrop(leveldrop === Id ? undefined : Id);
     const Category = Id;
-    console.log(Category);
     dispatch(
       Categorybasedsolvers({ Category })
     );
@@ -49,8 +52,10 @@ function NotViewed() {
   };
 
   const handleSolvers = async (Id) => {
-    const Solvers = Id;
-    console.log(Solvers);
+    const AssignedTo = Id;
+    dispatch(
+      UpdateView({ complaint, AssignedTo })
+    );
   }
 
   const renderlevelDrops = () => {
