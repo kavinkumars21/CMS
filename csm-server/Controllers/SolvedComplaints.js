@@ -2,7 +2,7 @@ import { ComplaintModel } from "../Schema/ComplaintSchema.js";
 
 export const SolvedComplaints = (req, res) => {
 
-    ComplaintModel.find({Viewed : "true" , Inprogress : "true" , Completed : "true" }).populate('User')
+    ComplaintModel.find({Viewed : "true" , Inprogress : "true" , Completed : "true" }).populate('User').populate('AssignedTo')
         .then((data) => {
             res.send({
                 status: 200,
