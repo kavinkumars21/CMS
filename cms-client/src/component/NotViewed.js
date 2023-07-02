@@ -53,6 +53,8 @@ function NotViewed() {
 
   const handleSolvers = async (Id) => {
     const AssignedTo = Id;
+    setleveldrop(false)
+    setdrop(false);
     dispatch(
       UpdateView({ complaint, AssignedTo })
     );
@@ -95,7 +97,7 @@ function NotViewed() {
                   <div className='h-10 z-0'>
                     <div className='bg-slate-400 rounded-md px-3 py-1 z-10 w-full'>
                       <button onClick={(e) => toggle(data._id)} className='flex'>
-                        Select
+                        Assign
                         <div className={`pt-1 ml-8 ${drop === data._id && "rotate-180 duration-1000"}`}>
                           <ion-icon name="chevron-down-outline"></ion-icon>
                         </div>
