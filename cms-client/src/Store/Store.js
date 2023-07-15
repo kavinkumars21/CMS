@@ -1,5 +1,5 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import LoginReducer from "./Slice/LoginSlice";
+import UserLoginReducer from "./Slice/UserLoginSlice";
 import ComplaintReducer from "./Slice/ComplaintDetails";
 import historyReducers from "./Slice/HistorySlice";
 import NotViewedCompReducers from "./Slice/NotViewedSlice";
@@ -10,9 +10,13 @@ import SolvedComplaintReducers from "./Slice/SolvedComplaints";
 import CategoryReducer from "./Slice/CategorySlice";
 import GetCategoryReducers from "./Slice/GetCategorySlice";
 import CatBasedSolversReducers from "./Slice/CategoryBasedSolvers";
+import SolverLoginReducer  from "./Slice/SolverLoginSlice";
+import SolverBasedReducers from "./Slice/SolverBasedComplaint";
+import SolverHistoryReducers from "./Slice/SolverHistorySlice";
+import AdminLoginReducer from "./Slice/AdminLoginSlice";
 
 const rootReducer = combineReducers({
-  LoginData: LoginReducer,
+  UserLoginData: UserLoginReducer,
   Complaints: ComplaintReducer,
   history: historyReducers,
   notviewed: NotViewedCompReducers,
@@ -22,7 +26,11 @@ const rootReducer = combineReducers({
   solved: SolvedComplaintReducers,
   category: CategoryReducer,
   complaintCategory: GetCategoryReducers,
-  CategoryBasedSolvers: CatBasedSolversReducers
+  CategoryBasedSolvers: CatBasedSolversReducers,
+  SolverLoginData: SolverLoginReducer,
+  AdminLoginData: AdminLoginReducer,
+  solvercomplaint: SolverBasedReducers,
+  solverhistory: SolverHistoryReducers,
 });
 
 const store = configureStore({

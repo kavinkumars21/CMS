@@ -1,50 +1,43 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from "react-redux";
+import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import { LoginData } from '../Store/Slice/LoginSlice';
+import user from '../Image/user.png';
+import solver from '../Image/solver.png';
+import admin from '../Image/admin.png';
 
 function Login() {
 
-    const dispatch = useDispatch();
-    const Navigate = useNavigate();
-    const { Login } = useSelector((state) => (state.LoginData));
+  const Navigate = useNavigate();
 
-    const UserId = Login?.data?.data?._id;
+  const handleUserLogin = () => {
+    Navigate("/userlogin");
+  }
 
-    const handleLoginData = async (e) => {
-        e.preventDefault();
-        const ele = e.target.elements;
-        const RollNumber = ele[0].value;
-        const Password = ele[1].value;
-        ele[0].value = "";
-        ele[1].value = "";
-        dispatch(
-            LoginData({ RollNumber, Password })
-        );
-    };
+  const handleSolversLogin = () =>{
+    Navigate("/solverslogin");
+  }
 
-    useEffect(() => {
-        if (Login?.data?.response === "success") {
-            Navigate("/home");
-            sessionStorage.setItem("USER", UserId);
-        } else {
-            console.log("wrong");
-        }
-    }, [Login]);
+  const handleAdminLogin = () => {
+    Navigate("/adminlogin");
+  }
 
-    return (
-        <div className='min-h-screen flex justify-center items-center'>
-            <form onSubmit={handleLoginData}>
-                <div className='grid gap-8 bg-blue-300 p-14 rounded-lg'>
-                    <input type="text" placeholder='Roll No' className='text-center h-10 rounded-lg' />
-                    <input type="password" placeholder='Password' className='text-center h-10 rounded-lg' />
-                    <div className='flex justify-center'>
-                        <button className='bg-blue-100 h-10 w-20 rounded-lg'>SUBMIT</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    )
+  return (
+    <div className='min-h-screen flex justify-end items-center bg-[url(https://cdn.dribbble.com/users/1067746/screenshots/6002017/media/bac39925e22450414f0ddf95b2ce06ce.jpg?compress=1&resize=1000x750&vertical=center)] bg-left bg-no-repeat'>
+      <div className='flex gap-10 pr-16'>
+        <button className='flex flex-col items-center border-[#5393ea] border-4 rounded-lg p-2' onClick={() => handleUserLogin()}>
+          <img src={user} className='h-28 w-28'></img>
+          <p className='text-blue-600 font-bold text-lg'>Student</p>
+        </button>
+        <button className='flex flex-col items-center border-[#5393ea] border-4 rounded-lg p-2' onClick={() => handleSolversLogin()}>
+          <img src={solver} className='h-28 w-28'></img>
+          <p className='text-blue-600 font-bold text-lg'>Solvers</p>
+        </button>
+        <button className='flex flex-col items-center border-[#5393ea] border-4 rounded-lg p-2' onClick={() => handleAdminLogin()}>
+          <img src={admin} className='h-28 w-28'></img>
+          <p className='text-blue-600 font-bold text-lg'>Admin</p>
+        </button>
+      </div>
+    </div>
+  )
 }
 
 export default Login
