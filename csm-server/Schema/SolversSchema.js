@@ -19,6 +19,10 @@ const SolversSchema = new mongoose.Schema(
          ref: "ComplaintType",
          required: true,
       },
+      Password: {
+        type: String,
+        required: true,
+     },
    },
    { timestamps: true }
 );

@@ -1,9 +1,9 @@
-import { UserModel } from "../Schema/UserSchema.js";
+import { AdminModel } from "../Schema/AdminSchema.js";
 import bcrypt from "bcrypt";
 
-export const Login = async (req, res) => {
+export const AdminLogin = async (req, res) => {
 
-    const data = await UserModel.findOne({ RollNumber: req.body.RollNumber });
+    const data = await AdminModel.findOne({ Name: req.body.Name });
 
     if (data) {
         const validatePassword = await bcrypt.compare(req.body.Password, data.Password);
@@ -11,7 +11,6 @@ export const Login = async (req, res) => {
             res.send({
                 status: 200,
                 message: "Password Correct",
-                data: data,
                 response: "success",
             });
         } else {
