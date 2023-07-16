@@ -21,8 +21,14 @@ function AdminHome() {
       );
     }
 
+    const handleLogout = () => {
+      // sessionStorage.removeItem("");
+      window.location.href = '/adminlogin';
+    }
+
   return (
     <div className='min-h-screen'>
+      <button onClick={handleLogout}>Logout</button>
         <div className='p-10 flex flex-col gap-3'>
           <h1>Add new complaint category</h1>
           <form onSubmit={handleCategory} className='flex gap-4'>

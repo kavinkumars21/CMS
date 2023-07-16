@@ -14,8 +14,7 @@ function Solvers() {
     dispatch(solverBased({ solver }));
   }, []);
 
-  const { solvercomplaint } = useSelector((state) => state.solvercomplaint)
-  const { inprogress } = useSelector((state) => state.inprogress);
+  const { solvercomplaint } = useSelector((state) => state.solvercomplaint);
 
   const handlestatus = async (Id) => {
     const id = Id;
@@ -24,6 +23,11 @@ function Solvers() {
     );
   }
 
+  const handleLogout = () => {
+    sessionStorage.removeItem("SOLVER");
+    window.location.href = '/solverslogin';
+  }
+  
   return (
     <div className='flex flex-col gap-8 p-10'>
       <div>
@@ -31,6 +35,7 @@ function Solvers() {
       </div>
       <div>
         <Link to="/solverhistory" >Complaint history</Link>
+        <button onClick={handleLogout}>Logout</button>
       </div>
       <div>
           <table>

@@ -42,10 +42,16 @@ function Home() {
       );
    }
 
+   const handleLogout = () => {
+    sessionStorage.removeItem("USER");
+    window.location.href = '/userlogin';
+   }
+
    return (
       <div className='min-h-screen'>
-         <div className='flex justify-end p-10'>
+         <div className='flex justify-end p-10 gap-6'>
             <Link to="/history" >Complaint history</Link>
+            <button onClick={handleLogout}>Logout</button>
          </div>
          <div className='flex justify-center align-middle mt-[8%]'>
             <form onSubmit={handleFormData} className='flex flex-col gap-4 p-8 border border-blue-300 rounded-md'>
