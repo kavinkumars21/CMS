@@ -3,12 +3,13 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import Cookies from 'universal-cookie';
 
-export const AdminLogin = async (req, res) => {
+export const Validate = async (req, res) => {
   const cookies = new Cookies();
-  const data = await AdminModel.findOne({ Name: req.body.Name });
+  const Password = req.body.Password;
+  const data = await AdminModel.findOne({ User: "admin" });
 
   if (data) {
-    const validatePassword = await bcrypt.compare(req.body.Password, data.Password);
+    const validatePassword = await bcrypt.compare(Password, data.Password);
     if (validatePassword) {
       const token = await tokenGeneratore("admin");
       res.cookie("jwt", token, {
@@ -27,16 +28,10 @@ export const AdminLogin = async (req, res) => {
     } else {
       return res.send({
         status: 404,
-        message: "Incorrect password",
-        response: "Incorrect password",
+        message: "Incorrect",
+        response: "Incorrect",
       });
     }
-  } else {
-    return res.send({
-      status: 404,
-      message: "User not found",
-      response: "User not found",
-    });
   }
 };
 
@@ -54,7 +49,7 @@ export const tokenValidator = async (token) => {
   return data;
 }
 
-export const AdminVerify = async (req, res, next) => {
+export const verify = async (req, res, next) => {
   try {
     const { jwt } = req.cookies;
     const valid = await tokenValidator(jwt);
@@ -64,7 +59,6 @@ export const AdminVerify = async (req, res, next) => {
       res.send("Access Denied");
     }
   } catch (error) {
-    console.log(error);
     res.send({ message: "Access Denied", error });
   }
 }
