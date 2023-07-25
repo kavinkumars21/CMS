@@ -9,6 +9,7 @@ import UserLogin from "./component/UserLogin";
 import SolversLogin from "./component/SolversLogin";
 import AdminLogin from "./component/AdminLogin";
 import SolverHistory from "./component/SolverHistory";
+import AdminRoutes from "./component/AdminRoutes";
 
 function App() {
 
@@ -19,9 +20,14 @@ function App() {
     {path: '/adminlogin', element: <AdminLogin /> },
     {path: '/home', element: <Home /> },
     {path: '/history', element: <ComplaintHistory /> },
-    {path: '/admin', element: <AdminHome />},
     {path: '/solver', element: <Solvers />},
-    {path: '/solverhistory', element: <SolverHistory />}
+    {path: '/solverhistory', element: <SolverHistory />},
+    {
+      element: <AdminRoutes /> ,
+      children: [
+        {path: '/admin', element: <AdminHome />},
+      ],
+    },
   ])
   return (
     <div>

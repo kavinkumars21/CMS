@@ -49,7 +49,7 @@ function Home() {
 
    return (
       <div className='min-h-screen'>
-         <div className='flex justify-end p-10 gap-6'>
+         <div className='flex justify-end p-10 gap-10'>
             <Link to="/history" >Complaint history</Link>
             <button onClick={handleLogout}>Logout</button>
          </div>

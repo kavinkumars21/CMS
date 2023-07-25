@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { axio } from "../../Config/Config.js";
 
 export const notviewedcomplaints = createAsyncThunk("Notviewed", async (data) => {
-  return axio.get(`/api/notviewed`, data);
+  return axio.get(`/api/notviewed`, data, { withCredentials: true });
 });
 
 const NotViewedCompReducers = createSlice({

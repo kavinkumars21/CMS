@@ -2,7 +2,7 @@ import { axio } from "../../Config/Config";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const AdminLoginData = createAsyncThunk("Login", async (data) => {
-    return axio.post(`/api/adminlogin`, data);
+    return axio.post(`/api/adminlogin`,data , { withCredentials: true });
 });
 
 export const AdminLoginReducer = createSlice({

@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { axio } from "../../Config/Config.js";
 
 export const inprogresscomplaints = createAsyncThunk("Inprogress", async (data) => {
-  return axio.get(`/api/inprogress`, data);
+  return axio.get(`/api/inprogress`, {data, withCredentials: true });
 });
 
 const InprogressCompReducers = createSlice({

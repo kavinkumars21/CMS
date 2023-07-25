@@ -29,15 +29,15 @@ function Solvers() {
   }
   
   return (
-    <div className='flex flex-col gap-8 p-10'>
-      <div>
-        Complaints Assigned
-      </div>
-      <div>
+    <div className='min-h-screen flex flex-col gap-8 p-10 items-center'>
+      <div className='flex justify-end w-full gap-10'>
         <Link to="/solverhistory" >Complaint history</Link>
         <button onClick={handleLogout}>Logout</button>
       </div>
       <div>
+        <h1 className='font-semibold text-lg'>Complaints Assigned</h1>
+      </div>
+      <div className=''>
           <table>
             <tr>
               <th className='border border-gray-800 p-3'>Raised by</th>
