@@ -4,10 +4,13 @@ import Inprogress from './Inprogress';
 import Solved from './Solved';
 import { useDispatch } from 'react-redux';
 import { ComplaintCategory } from '../Store/Slice/CategorySlice';
+import Cookies from 'universal-cookie';
 
 function AdminHome() {
 
     const dispatch = useDispatch();
+
+    const cookies = new Cookies();
 
     const [component, setComponent] = useState("NotViewed");
 
@@ -22,7 +25,7 @@ function AdminHome() {
     }
 
     const handleLogout = () => {
-      // sessionStorage.removeItem("");
+      cookies.remove("jwt");
       window.location.href = '/adminlogin';
     }
 

@@ -8,7 +8,7 @@ function AdminLogin() {
   const dispatch = useDispatch();
   const Navigate = useNavigate();
 
-  const [Incorrect, setIncorrect] = useState();
+  const [Response, setResponse] = useState();
 
   const { AdminLogin } = useSelector((state) => (state.AdminLoginData));
 
@@ -27,8 +27,8 @@ function AdminLogin() {
   useEffect(() => {
     if (AdminLogin?.data?.response === "success") {
       Navigate("/admin");
-    } else if (AdminLogin?.data?.response === "Incorrect password") {
-      setIncorrect(true);
+    } else {
+      setResponse(AdminLogin?.data?.response);
     }
   }, [AdminLogin]);
 
@@ -42,7 +42,7 @@ function AdminLogin() {
           <div className='flex justify-center'>
             <button className='bg-white h-10 w-20 rounded-lg text-blue-600 font-semibold'>SUBMIT</button>
           </div>
-          <span className='pl-5'>{Incorrect && <div className='text-red-600 font-semibold'>Incorrect Password</div>}</span>
+          <span className='pl-5'>{Response && <div className='text-red-600 font-semibold'>{Response}</div>}</span>
         </div>
       </form>
     </div>
